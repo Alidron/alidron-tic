@@ -7,12 +7,12 @@ build-rpi:
     tags:
         - rpi
     script:
-        - make build
+        - make build-rpi
         
 deploy-rpi:
     stage: deploy
     tags:
         - rpi
     script:
-        - make push
+        - make push-rpi
         
