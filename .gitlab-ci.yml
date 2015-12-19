@@ -1,0 +1,18 @@
+stages:
+    - build
+    - deploy
+    
+build-rpi:
+    stage: build
+    tags:
+        - rpi
+    script:
+        - make build
+        
+deploy-rpi:
+    stage: deploy
+    tags:
+        - rpi
+    script:
+        - make push
+        

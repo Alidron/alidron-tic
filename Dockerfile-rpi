@@ -1,0 +1,8 @@
+FROM alidron/rpi-alidron-isac
+MAINTAINER Axel Voitier <axel.voitier@gmail.com>
+
+RUN pip install pyserial
+
+WORKDIR /usr/src/alidron-tic
+
+COPY alidron-tic.py /usr/src/alidron-tic/alidron-tic.py
