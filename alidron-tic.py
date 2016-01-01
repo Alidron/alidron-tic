@@ -98,7 +98,7 @@ class AlidronTIC(object):
                 except KeyError:
                     logger.info('Creating ISAC value for %s', tag)
                     metadata = {
-                        'precision': 's',
+                        'ts_precision': 's',
                         'smoothing': True
                     }
                     signal = IsacValue(
