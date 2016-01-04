@@ -44,6 +44,9 @@ def _checksum(trame):
     return False
 
 class AlidronTIC(object):
+
+    ALLOWED_TAGS = ['ADCO', 'BASE', 'IINST', 'IMAX', 'ISOUSC', 'OPTARIF', 'PAPP', 'PTEC']
+
     def __init__(self, port):
         self.isac_node = IsacNode('alidron-tic')
         green.signal(signal.SIGTERM, partial(self._sigterm_handler))
@@ -93,6 +96,11 @@ class AlidronTIC(object):
                     continue
 
                 logger.debug('Read %s: %s', tag, data)
+                
+                if tag not in self.ALLOWED_TAGS:
+                    logger.warning('Discarding %s: %s', tag, data)
+                    continue
+                
                 try:
                     signal = self.signals[tag]
                 except KeyError:
