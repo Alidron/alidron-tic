@@ -111,12 +111,13 @@ class AlidronTIC(object):
                     )
                     self.signals[tag] = signal
 
-                signal.value = data
-                green.sleep(0.1)
+                try:
+                    signal.value = int(data)
+                except ValueError:
+                    signal.value = data
 
             except Exception as ex:
                 logger.error('Hum, something weird: %s', ex)
-                green.sleep(0.1)
 
 def main(port):
     tic = AlidronTIC(port)
